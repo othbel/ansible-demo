@@ -1,0 +1,6 @@
+---
+- hosts: webservers
+  name: First playbook
+  tasks:
+    - name: Ping second VM
+      ansible.builtin.ping:

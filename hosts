@@ -1,0 +1,6 @@
+[webservers]
+# app1.example.com
+# 192.168.2.[11:100]
+# server1 ansible_ssh_host=192.168.1.10
+
+server1 ansible_ssh_host=192.168.75.138 ansible_user=vm2 

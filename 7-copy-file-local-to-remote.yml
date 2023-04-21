@@ -1,0 +1,14 @@
+---
+- name: Copy file from local to remote
+  hosts: webservers
+
+
+  tasks:
+    - name: Copying file
+      become: true
+      ansible.builtin.copy:
+        src: /home/vmware/Downloads/install_kvm.sh
+        dest: /tmp
+        owner: vm2
+        group: vm2
+        mode: "0744"
