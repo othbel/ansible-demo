@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  name: Running two tasks
+
+  tasks:
+    - name: Ping localhost
+      ansible.builtin.ping:
+
+    - name: Print Hello World
+      ansible.builtin.debug:
+        msg: "Hello World"

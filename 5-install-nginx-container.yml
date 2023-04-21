@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  name: Install Docker and Run Nginx Container
+  become: true
+
+  tasks:
+    - name: Install Dependencies
+      ansible.builtin.apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        update_cache: true
+    - name: Download script
+      ansible.builtin.get_url:
+        url: https://get.docker.com/
+        dest: /home/vmware/Documents/get-docker.sh
+        mode: '0755'
+    - name: Install Docker
+      ansible.builtin.script:
+        cmd: /home/vmware/Documents/get-docker.sh
+    - name: Run Nginx Container
+      community.docker.docker_container:
+        name: nginx_container
+        state: started
+        image: nginx
+        pull: true
+        ports:
+          - "8080:80"
