@@ -1,0 +1,13 @@
+---
+- name: Full Install
+  hosts: webservers
+  become: true
+  roles:
+    - fullinstall
+
+- name: Basic Install
+  hosts: localhost
+  # connection: local
+  become: true
+  roles:
+    - basicinstall
