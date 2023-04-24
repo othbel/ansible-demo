@@ -7,7 +7,7 @@
     - name: Copying file
       become: true
       ansible.builtin.copy:
-        src: /home/vmware/Downloads/install_kvm.sh
+        src: /home/vmware/Documents/install_kvm.sh
         dest: /tmp
         owner: vm2
         group: vm2

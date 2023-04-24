@@ -1,0 +1,31 @@
+---
+- name: Sort images and documents in directories
+  hosts: webservers
+
+  tasks:
+    # - name: Copy scripts
+    #   ansible.builtin.copy:
+    #     src: "{{ item }}"
+    #     dest: /home/vm2/Desktop
+    #     owner: vm2
+    #     mode: "0766"
+    #   loop:
+    #     - /home/vmware/Documents/ansible/create-files.sh
+    #     - /home/vmware/Documents/ansible/sort-files.sh
+
+    - name: Create files
+      # become: true
+      ansible.builtin.script:
+        chdir: /home/vm2/Desktop
+        cmd: /home/vmware/Documents/ansible/create-files.sh
+        # free_form: /home/vmware/Documents/ansible/create-files.sh
+    - name: Executing sorting script
+      # become: true
+      ansible.builtin.script:
+        chdir: /home/vm2/Desktop
+        # free_form: /home/vmware/Documents/ansible/sort-files.sh
+        cmd: /home/vmware/Documents/ansible/sort-files.sh
+    - name: Show var
+      ansible.builtin.debug:
+        msg: "{{ ansible_virtualization_type }}"
+        # msg: "{{ ansible_distribution }}"
