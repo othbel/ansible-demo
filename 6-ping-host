@@ -4,3 +4,8 @@
   tasks:
     - name: Ping second VM
       ansible.builtin.ping:
+      register: result
+    - name: Debug
+      debug: 
+        msg: "{{ result }}"
+      
